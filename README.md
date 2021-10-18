@@ -1,5 +1,5 @@
 # Spatial-Angular Attention Network for Light Field Reconstruction
-### [Project Page](http://www.liuyebin.com/localtrans/localtrans.html) | [Paper](https://arxiv.org/abs/2106.04067) | [Video](https://www.bilibili.com/video/BV1zq4y1W7Uq/)
+### [Project Page](https://gaochangwu.github.io/SAAN/SAA-Net.html) | [Paper](https://arxiv.org/pdf/2007.02252) | [Video](https://www.bilibili.com/video/BV1VK411H7Z1/)
 
 [Gaochang Wu](https://gaochangwu.github.io/)<sup>1</sup>,
 [Yingqian Wang](https://yingqianwang.github.io/)<sup>2</sup>,
@@ -11,6 +11,11 @@
 <sup>2</sup>College of Electronic Science and Technology, Nation University of Defense Technology (NUDT) <br> 
 <sup>3</sup>Department of Automation, Tsinghua University <br>
 <sup>4</sup>Tsinghua-Berkeley Shenzhen Institute <br>
+
+## Abstract
+![Teaser Image](https://gaochangwu.github.io/image/SAAN.jpg)
+
+Typical learning-based light field reconstruction methods demand in constructing a large receptive field by deepening their networks to capture correspondences between input views. In this paper, we propose a spatial-angular attention network to perceive non-local correspondences in the light field, and reconstruct high angular resolution light field in an end-to-end manner. Motivated by the non-local attention mechanism, a spatial-angular attention module specifically for the high-dimensional light field data is introduced to compute the response of each query pixel from all the positions on the epipolar plane, and generate an attention map that captures correspondences along the angular dimension. Then a multi-scale reconstruction structure is proposed to efficiently implement the non-local attention in the low resolution feature space, while also preserving the high frequency components in the high-resolution feature space. Extensive experiments demonstrate the superior performance of the proposed spatial-angular attention network for reconstructing sparsely-sampled light fields with non-Lambertian effects.
 
 ## Note for Code
 1. Environment -Python 3.7.4, tensorflow-gpu==1.13.1 <br>
