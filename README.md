@@ -13,7 +13,7 @@
 <sup>4</sup>Tsinghua-Berkeley Shenzhen Institute <br>
 
 ## Abstract
-![Teaser Image](https://gaochangwu.github.io/image/SAAN.jpg)
+![Teaser Image width="500"](https://gaochangwu.github.io/image/SAAN.jpg)
 
 Typical learning-based light field reconstruction methods demand in constructing a large receptive field by deepening their networks to capture correspondences between input views. In this paper, we propose a spatial-angular attention network to perceive non-local correspondences in the light field, and reconstruct high angular resolution light field in an end-to-end manner. Motivated by the non-local attention mechanism, a spatial-angular attention module specifically for the high-dimensional light field data is introduced to compute the response of each query pixel from all the positions on the epipolar plane, and generate an attention map that captures correspondences along the angular dimension. Then a multi-scale reconstruction structure is proposed to efficiently implement the non-local attention in the low resolution feature space, while also preserving the high frequency components in the high-resolution feature space. Extensive experiments demonstrate the superior performance of the proposed spatial-angular attention network for reconstructing sparsely-sampled light fields with non-Lambertian effects.
 
