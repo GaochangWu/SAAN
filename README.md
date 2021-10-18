@@ -33,4 +33,6 @@ Comparison of the results on the light fields from the MPI Light Field Archive (
 
 3. The code for 3D light field (1D angular and 2D spatial) reconstruction is "main3d.py". Recommend using the model with upsampling scale \alpha=3 for x8 or x9 reconstruction, and the model with upsampling scale \alpha=4 for x16 reconstruction. <br>
 
-4. Please cite our paper if it helps, thank you! <br>
+4. The code for 4D light field reconstruction is "main4d.py".
+
+5. Please cite our paper if it helps, thank you! <br>
