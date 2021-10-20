@@ -14,7 +14,7 @@ os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'
 # ----------------- Parameters setting -----------------------
 sceneName = 'WorkShop'  # Development_dataset_3 Bikes FairyCollection LivingRoom Mannequin WorkShop
 dataset = 'MPILF'    # ICME MPILF
-sceneFile = '../Datasets/' + dataset + '/'
+sceneFile = './Datasets/' + dataset + '/'
 model_up_scale = 3  # MUST BE 3 or 4
 N_svd = 0  # Number of singular values for SVD decomposition. If N_svd=0, we do not perform SVD decomposition.
 down_scale = 8
