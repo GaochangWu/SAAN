@@ -14,7 +14,7 @@ os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'
 
 # ----------------- Parameters setting -----------------------
 sceneFile = 'Lytro/30scenes'  # Lytro/Reflective Lytro/30scenes  Occlusions  LinCamArray  StanfordMicro05  Stanford  Soft3D
-scenePath = '../Datasets/' + sceneFile + '/'
+scenePath = './Datasets/' + sceneFile + '/'
 modelPath = "./Model/model_SAANx3"
 
 results_path = 'Results/' + 'attSAAN/' + sceneFile + 'x7/'
