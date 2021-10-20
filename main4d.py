@@ -1,7 +1,7 @@
 import tensorflow as tf
 import numpy as np
 import os
-from model_SAANx3_shuffle import model
+from model_SAAN import model
 import time
 import matplotlib.pyplot as plt
 import utils
@@ -13,32 +13,30 @@ os.environ["CUDA_VISIBLE_DEVICES"] = '1'
 os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'
 
 # ----------------- Parameters setting -----------------------
-sceneFile = 'Lytro/Occlusions'  # Lytro/Reflective 30scenes  Occlusions
+sceneFile = 'Lytro/30scenes'  # Lytro/Reflective Lytro/30scenes  Occlusions  LinCamArray  StanfordMicro05  Stanford  Soft3D
 scenePath = '../Datasets/' + sceneFile + '/'
-modelPath = "./Model/model_SAANx3_shuffle"
+modelPath = "./Model/model_SAANx3"
 
-results_path = 'Results/' + 'SAAN/' + sceneFile + 'x3/'
+results_path = 'Results/' + 'attSAAN/' + sceneFile + 'x7/'
 utils.mkdir(results_path)
 
 model_up_scale = 3
 FLAG_RGB = 0
-save_img = 1
 tone_coef = 1.0
-s_ori, ang_start = 14, 5
+s_ori, ang_start = 14, 4
 t_ori = s_ori
-ang_ori = 7
-ang_in = 3
+ang_ori = 8
+ang_in = 2
 ang_out = ang_ori
-
+border_cut = 22
 up_scale = int((ang_out - 1) / (ang_in - 1))
 num_iter = int(np.ceil(np.log(up_scale) / np.log(model_up_scale)))
-border_cut = 22
 pyramid = 4
 
 lf_files = sorted(glob.glob(scenePath + '*.png'))
 log_batch_path = results_path + '/Log.txt'
 with open(log_batch_path, 'w') as f:
-    f.write("Model name: %s. Dataset is %s.\n" % (modelPath, sceneFile))
+    f.write("Dataset is %s.\n" % sceneFile)
 
 # -------------------------------------------------------------------
 psnr_bacth = [0 for _ in range(len(lf_files))]
@@ -199,9 +197,9 @@ for i in range(0, len(lf_files)):
                 if ang_out == ang_ori:
                     cur_gt = fullLF[:, :, :, s, t]
                     psnr[s, t], ssim[s, t] = utils.metric(cur_im, cur_gt, border_cut)
-            if save_img:
-                plt.imsave(cur_path + '/images/' + 'out_' + str(s + 1) + '_' + str(t + 1) + '.png',
-                           np.uint8(out_lf[:, :, :, s, t] * 255))
+
+            plt.imsave(cur_path + '/images/' + 'out_' + str(s + 1) + '_' + str(t + 1) + '.png',
+                       np.uint8(out_lf[:, :, :, s, t] * 255))
 
     psnr_avg = np.average(psnr) * ang_out * ang_out / (ang_out * ang_out - ang_in * ang_in)
     ssim_avg = np.average(ssim) * ang_out * ang_out / (ang_out * ang_out - ang_in * ang_in)
@@ -209,7 +207,7 @@ for i in range(0, len(lf_files)):
     ssim_bacth[i] = ssim_avg
     time_bacth[i] = elapsed1 + elapsed2
 
-    print("PSNR and SSIM on synthetic views are %2.3f and %1.4f. Taking %.2f seconds" % (psnr_avg, ssim_avg, time_bacth[i]))
+    print("PSNR and SSIM on synthetic views are %2.3f and %1.4f." % (psnr_avg, ssim_avg))
     with open(log_path, 'a') as f:
         f.write("PSNR and SSIM on synthetic views are %2.3f and %1.4f.\n" % (psnr_avg, ssim_avg))
     with open(log_batch_path, 'a') as f:
