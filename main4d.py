@@ -17,7 +17,7 @@ sceneFile = 'Lytro/30scenes'  # Lytro/Reflective Lytro/30scenes  Occlusions  Lin
 scenePath = './Datasets/' + sceneFile + '/'
 modelPath = "./Model/model_SAANx3"
 
-results_path = 'Results/' + 'attSAAN/' + sceneFile + 'x7/'
+results_path = 'Results/' + sceneFile + '/'
 utils.mkdir(results_path)
 
 model_up_scale = 3
